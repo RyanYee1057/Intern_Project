@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/p_pic"
+                android:layout_width="80dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="600dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_p_id"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:text="Product id :" />
+
+                <TextView
+                    android:id="@+id/title_c_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="Category id :" />
+
+                <TextView
+                    android:id="@+id/title_product_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="Product name :" />
+
+                <TextView
+                    android:id="@+id/title_selling_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="Selling Price :" />
+
+                <TextView
+                    android:id="@+id/title_category_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="Category name :" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/p_id"
+                    android:layout_width="250dp"
+                    android:layout_height="25dp"
+                    android:gravity="start"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/c_id"
+                    android:layout_width="250dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="100dp"
+                    android:gravity="start"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/p_name"
+                    android:layout_width="250dp"
+                    android:layout_height="25dp"
+                    android:gravity="start"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="250dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="100dp"
+                    android:gravity="start"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/c_name"
+                    android:layout_width="250dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="100dp"
+                    android:gravity="start"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
