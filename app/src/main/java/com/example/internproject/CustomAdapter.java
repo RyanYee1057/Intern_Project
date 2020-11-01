@@ -15,13 +15,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomAdapter extends BaseAdapter implements Filterable {
     Context context;
     ArrayList<productModel> productList, filterList;
+    ArrayList<String> images;
     ItemFilter fi;
+    ImageLoader imageLoader;
+
+    public CustomAdapter(Context context, ArrayList<productModel> product, ArrayList<String> images) {
+        this.context = context;
+        this.productList = product;
+        this.filterList = product;
+        this.images = images;
+    }
 
     public CustomAdapter(Context context, ArrayList<productModel> product) {
         this.context = context;
@@ -49,6 +61,23 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.list, null);
+
+        //new
+        //NetworkImageView
+        NetworkImageView networkImageView = new NetworkImageView(context);
+
+        /*
+        //Initializing ImageLoader
+        imageLoader = MySingleton.getInstance(context).getImageLoader();
+        imageLoader.get(images.get(position), ImageLoader.getImageListener(networkImageView, R.mipmap.ic_launcher, android.R.drawable.ic_dialog_alert));
+
+        //Setting the image url to load
+        networkImageView.setImageUrl(images.get(position),imageLoader);
+
+        //Scaling the imageview
+        networkImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        networkImageView.setLayoutParams(new GridView.LayoutParams(200,200));
+        */
 
         TextView product_id = view.findViewById(R.id.p_id);
         TextView category_id = view.findViewById(R.id.c_id);

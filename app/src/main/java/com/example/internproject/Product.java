@@ -28,17 +28,22 @@ import java.util.ArrayList;
 
 public class Product extends AppCompatActivity implements TextWatcher{
 
-    LinearLayout L1, L2, L3, L4, L5;
+    LinearLayout L1, L2;
     GridView gridView;
     EditText search;
     CustomAdapter adapter;
     final ArrayList<productModel> productList = new ArrayList<>();
+
+    ArrayList<String> images;
+    public static final String TAG_IMAGE_URL = "images";
     String url = "http://pos.api.itmansolution.com/product/getAllProduct";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product);
+
+        images = new ArrayList<>();
 
         L1 = (LinearLayout) findViewById(R.id.C1_screen);
         L2 = (LinearLayout) findViewById(R.id.C2_screen);
@@ -55,29 +60,12 @@ public class Product extends AppCompatActivity implements TextWatcher{
                         try {
 
                             JSONArray jsonArray = response.getJSONArray("data");
-                            for(int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                String product_id = jsonObject.getString("product_id");
-                                String category_id = jsonObject.getString("category_id");
-                                String product_name = jsonObject.getString("product_name");
-                                String selling_price = jsonObject.getString("selling_price");
-                                String category_name = jsonObject.getString("category_name");
-                                String product_pic = jsonObject.getString("img_url");
-                                Toast.makeText(Product.this, "Check", Toast.LENGTH_LONG).show();
+                            showGrid(jsonArray);
 
-                                productModel p = new productModel();
-                                p.setP_id(product_id);
-                                p.setC_id(category_id);
-                                p.setPrice(selling_price);
-                                p.setP_name(product_name);
-                                p.setC_name(category_name);
-                                p.setP_pic(product_pic);
-                                productList.add(p);
-                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        adapter = new CustomAdapter(Product.this, productList);
+                        adapter = new CustomAdapter(Product.this, productList, images);
                         gridView.setAdapter(adapter);
 
                     }
@@ -109,6 +97,30 @@ public class Product extends AppCompatActivity implements TextWatcher{
         L1.setVisibility(View.GONE);
         L2.setVisibility(View.GONE);
         gridView.setVisibility(View.VISIBLE);
+    }
+
+    private void showGrid(JSONArray jsonArray) throws JSONException {
+
+            for(int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String product_id = jsonObject.getString("product_id");
+                String category_id = jsonObject.getString("category_id");
+                String product_name = jsonObject.getString("product_name");
+                String selling_price = jsonObject.getString("selling_price");
+                String category_name = jsonObject.getString("category_name");
+                String product_pic = jsonObject.getString("img_url");
+                Toast.makeText(Product.this, "Check", Toast.LENGTH_LONG).show();
+
+                productModel p = new productModel();
+                p.setP_id(product_id);
+                p.setC_id(category_id);
+                p.setPrice(selling_price);
+                p.setP_name(product_name);
+                p.setC_name(category_name);
+                p.setP_pic(product_pic);
+                productList.add(p);
+            }
+
     }
 
     @Override
