@@ -2,7 +2,7 @@ package com.example.internproject;
 
 import android.content.ClipData;
 import android.content.Context;
-import android.os.Bundle;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,25 +15,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import com.bumptech.glide.Glide;
+
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomAdapter extends BaseAdapter implements Filterable {
     Context context;
     ArrayList<productModel> productList, filterList;
-    ArrayList<String> images;
     ItemFilter fi;
-    ImageLoader imageLoader;
-
-    public CustomAdapter(Context context, ArrayList<productModel> product, ArrayList<String> images) {
-        this.context = context;
-        this.productList = product;
-        this.filterList = product;
-        this.images = images;
-    }
+    //ImageLoader imageLoader;
 
     public CustomAdapter(Context context, ArrayList<productModel> product) {
         this.context = context;
@@ -56,28 +51,12 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         return i;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View getView(int position, View view, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.list, null);
-
-        //new
-        //NetworkImageView
-        NetworkImageView networkImageView = new NetworkImageView(context);
-
-        /*
-        //Initializing ImageLoader
-        imageLoader = MySingleton.getInstance(context).getImageLoader();
-        imageLoader.get(images.get(position), ImageLoader.getImageListener(networkImageView, R.mipmap.ic_launcher, android.R.drawable.ic_dialog_alert));
-
-        //Setting the image url to load
-        networkImageView.setImageUrl(images.get(position),imageLoader);
-
-        //Scaling the imageview
-        networkImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        networkImageView.setLayoutParams(new GridView.LayoutParams(200,200));
-        */
 
         TextView product_id = view.findViewById(R.id.p_id);
         TextView category_id = view.findViewById(R.id.c_id);
@@ -91,7 +70,8 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         selling_price.setText(productList.get(position).getPrice());
         product_name.setText(productList.get(position).getP_name());
         category_name.setText(productList.get(position).getC_name());
-        //product_pic.setImage(productList.get(position).getP_pic());
+
+        Glide.with(context).load(productList.get(position).getP_pic()).override(160, 150).into(product_pic);
 
         return view;
     }
@@ -116,7 +96,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
                 for(int i=0; i<filterList.size();i++){
                     if(filterList.get(i).getP_name().toLowerCase().contains(constraint)){
                         productModel p = new productModel(filterList.get(i).getP_name(), filterList.get(i).getP_id(),
-                                filterList.get(i).getC_name(), filterList.get(i).getC_id(), (filterList.get(i).getPrice()));
+                                filterList.get(i).getC_name(), filterList.get(i).getC_id(), filterList.get(i).getPrice(), filterList.get(i).getP_pic());
                         done.add(p);
                     }
                 }

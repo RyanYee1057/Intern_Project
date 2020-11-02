@@ -34,16 +34,13 @@ public class Product extends AppCompatActivity implements TextWatcher{
     CustomAdapter adapter;
     final ArrayList<productModel> productList = new ArrayList<>();
 
-    ArrayList<String> images;
-    public static final String TAG_IMAGE_URL = "images";
+    public static final String TAG_IMAGE_URL = "img_url";
     String url = "http://pos.api.itmansolution.com/product/getAllProduct";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product);
-
-        images = new ArrayList<>();
 
         L1 = (LinearLayout) findViewById(R.id.C1_screen);
         L2 = (LinearLayout) findViewById(R.id.C2_screen);
@@ -65,7 +62,7 @@ public class Product extends AppCompatActivity implements TextWatcher{
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        adapter = new CustomAdapter(Product.this, productList, images);
+                        adapter = new CustomAdapter(Product.this, productList);
                         gridView.setAdapter(adapter);
 
                     }
@@ -109,7 +106,9 @@ public class Product extends AppCompatActivity implements TextWatcher{
                 String selling_price = jsonObject.getString("selling_price");
                 String category_name = jsonObject.getString("category_name");
                 String product_pic = jsonObject.getString("img_url");
-                Toast.makeText(Product.this, "Check", Toast.LENGTH_LONG).show();
+                Toast.makeText(Product.this, product_pic, Toast.LENGTH_LONG).show();
+
+                //images.add(jsonObject.getString("img url"));
 
                 productModel p = new productModel();
                 p.setP_id(product_id);

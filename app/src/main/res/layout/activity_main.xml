@@ -61,20 +61,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/product" />
 
-    <GridView
-        android:id="@+id/grid"
-        android:layout="@layout/list"
-        android:numColumns="3"
-        android:gravity="center"
-        android:columnWidth="50dp"
-        android:stretchMode="columnWidth"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/p_overview"/>
-
     <!--android:layout_width="fill_parent"
    android:layout_height="fill_parent"
    android:numColumns="auto_fit"-->

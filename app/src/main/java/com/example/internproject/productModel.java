@@ -6,12 +6,13 @@ public class productModel {
     String product_id, category_id, selling_price;
     String product_name, category_name, product_pic;
 
-    public productModel(String p_name, String c_name, String p_id, String c_id, String price) {
+    public productModel(String p_name, String c_name, String p_id, String c_id, String price, String p_pic) {
         this.product_name = p_name;
         this.category_name = c_name;
         this.product_id = p_id;
         this.category_id = c_id;
         this.selling_price = price;
+        this.product_pic = p_pic;
     }
 
     public productModel() {
