@@ -3,561 +3,228 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/testGrid"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/search_title"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="   Search :   "
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="26sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onGrid"
-            android:text="Grid" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/category1"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:onClick="on1"
-            android:text="c01" />
-
-        <Button
-            android:id="@+id/category2"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:onClick="on2"
-            android:text="c02"
-            android:visibility="visible" />
-
-        <Button
-            android:id="@+id/category3"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:onClick="on3"
-            android:text="c03" />
-
-        <Button
-            android:id="@+id/category4"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:onClick="on4"
-            android:text="c04" />
-
-        <Button
-            android:id="@+id/category5"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:onClick="on5"
-            android:text="c05" />
-
-        <EditText
-            android:id="@+id/filterGrid"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="filter"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/filterGrid"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Enter product name"
+                android:inputType="textPersonName" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/grid_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical">
 
-        <GridView
-            android:id="@+id/grid"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnWidth="50dp"
-            android:gravity="center"
-            android:horizontalSpacing="50dp"
-            android:layout="@layout/list"
-            android:numColumns="2"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/filterGrid" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/C1_screen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/Button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TableLayout
+                <Button
+                    android:id="@+id/all_product"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:onClick="onGrid"
+                    android:text="All product" />
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/c01"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="on1"
+                    android:text="Bread" />
 
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
+                <Button
+                    android:id="@+id/c02"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="on2"
+                    android:text="Puff"
+                    android:visibility="visible" />
 
-                            <ImageView
-                                android:id="@+id/imageA1"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
+                <Button
+                    android:id="@+id/c03"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="on3"
+                    android:text="hot drink" />
 
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/c04"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="on4"
+                    android:text="cold drink" />
 
-                                <TextView
-                                    android:id="@+id/nameA1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
+                <Button
+                    android:id="@+id/c05"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="on5"
+                    android:text="category 5" />
 
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageA2"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameA2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <LinearLayout
-                            android:layout_width="120dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageA3"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameA3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageA4"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameA4"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageA5"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameA5"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageA6"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameA6"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageA7"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameA7"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageA8"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameA8"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </TableRow>
-
-                </TableLayout>
             </LinearLayout>
-        </ScrollView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/C2_screen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/Product"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TableLayout
+                <LinearLayout
+                    android:id="@+id/grid_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <TableRow
+                    <GridView
+                        android:id="@+id/grid"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="50dp"
+                        android:layout="@layout/list"
+                        android:numColumns="2"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/filterGrid">
 
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
+                    </GridView>
+                </LinearLayout>
 
-                            <ImageView
-                                android:id="@+id/imageB1"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
+                <LinearLayout
+                    android:id="@+id/C1_screen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameB1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageB2"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameB2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow
+                    <GridView
+                        android:id="@+id/c1_grid"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="50dp"
+                        android:layout="@layout/list"
+                        android:numColumns="2"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/filterGrid">
 
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
+                    </GridView>
+                </LinearLayout>
 
-                            <ImageView
-                                android:id="@+id/imageB3"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
+                <LinearLayout
+                    android:id="@+id/C2_screen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameB3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageB4"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameB4"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow
+                    <GridView
+                        android:id="@+id/c2_grid"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="50dp"
+                        android:layout="@layout/list"
+                        android:numColumns="2"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/C1_screen" />
+                </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/C3_screen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                            <ImageView
-                                android:id="@+id/imageB5"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameB5"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageB6"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameB6"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow
+                    <GridView
+                        android:id="@+id/c3_grid"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="50dp"
+                        android:layout="@layout/list"
+                        android:numColumns="2"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/C2_screen" />
+                </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/C4_screen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                            <ImageView
-                                android:id="@+id/imageB7"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
+                    <GridView
+                        android:id="@+id/c4_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="50dp"
+                        android:layout="@layout/list"
+                        android:numColumns="2"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/C3_screen" />
+                </LinearLayout>
 
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameB7"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="250dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/imageB8"
-                                android:layout_width="170dp"
-                                android:layout_height="150dp"
-                                android:contentDescription="Product Details"
-                                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                            <RelativeLayout
-                                android:layout_width="170dp"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/nameB8"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </TableRow>
-
-                </TableLayout>
             </LinearLayout>
-        </ScrollView>
-
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
