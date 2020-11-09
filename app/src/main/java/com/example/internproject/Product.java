@@ -3,10 +3,14 @@ package com.example.internproject;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -23,16 +27,20 @@ import java.util.ArrayList;
 public class Product extends AppCompatActivity implements TextWatcher{
 
     LinearLayout c1s, c2s, c3s, c4s, gs;
-    GridView gridView, c1, c2, c3, c4, c5;
+    GridView gridView, c1, c2, c3, c4;
+    ListView cA;
     EditText search;
     CustomAdapter adapter, a1, a2, a3, a4;
+    cAdapter aA;
     final ArrayList<productModel> productList = new ArrayList<>();
     final ArrayList<productModel> category1 = new ArrayList<>();
     final ArrayList<productModel> category2 = new ArrayList<>();
     final ArrayList<productModel> category3 = new ArrayList<>();
     final ArrayList<productModel> category4 = new ArrayList<>();
+    final ArrayList<productModel> categoryList = new ArrayList<>();
 
     String url = "http://pos.api.itmansolution.com/product/getAllProduct";
+    String c_url ="http://pos.api.itmansolution.com/product/getAllCategory";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,7 @@ public class Product extends AppCompatActivity implements TextWatcher{
         c3 = findViewById(R.id.c3_grid);
         c4 = findViewById(R.id.c4_grid);
         gridView = findViewById(R.id.grid);
+        cA = findViewById(R.id.cTitle_list);
 
         search = (EditText) findViewById(R.id.filterGrid);
         search.addTextChangedListener(this);
@@ -81,6 +90,7 @@ public class Product extends AppCompatActivity implements TextWatcher{
 
                         a4 = new CustomAdapter(Product.this, category4);
                         c4.setAdapter(a4);
+
                     }
                 }, new Response.ErrorListener() {
 
@@ -92,6 +102,73 @@ public class Product extends AppCompatActivity implements TextWatcher{
                 });
 
         MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+
+        JsonObjectRequest objRequest = new JsonObjectRequest
+                (Request.Method.GET, c_url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("data");
+                            showPic(jsonArray);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        aA = new cAdapter(Product.this, categoryList);
+                        cA.setAdapter(aA);
+
+                        cA.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                //first item in list view
+                                if (i == 0){
+                                    gs.setVisibility(View.GONE);
+                                    c1s.setVisibility(View.VISIBLE);
+                                    c2s.setVisibility(View.GONE);
+                                    c3s.setVisibility(View.GONE);
+                                    c4s.setVisibility(View.GONE);
+                                }
+
+                                if (i == 1){
+                                    gs.setVisibility(View.GONE);
+                                    c1s.setVisibility(View.GONE);
+                                    c2s.setVisibility(View.VISIBLE);
+                                    c3s.setVisibility(View.GONE);
+                                    c4s.setVisibility(View.GONE);
+                                }
+
+                                if (i == 2){
+                                    gs.setVisibility(View.GONE);
+                                    c1s.setVisibility(View.GONE);
+                                    c2s.setVisibility(View.GONE);
+                                    c3s.setVisibility(View.VISIBLE);
+                                    c4s.setVisibility(View.GONE);
+                                }
+
+                                if (i == 3){
+                                    gs.setVisibility(View.GONE);
+                                    c1s.setVisibility(View.GONE);
+                                    c2s.setVisibility(View.GONE);
+                                    c3s.setVisibility(View.GONE);
+                                    c4s.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        });
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+
+                    }
+                });
+
+        MySingleton.getInstance(this).addToRequestQueue(objRequest);
     }
 
     public void onGrid(View view){
@@ -100,38 +177,6 @@ public class Product extends AppCompatActivity implements TextWatcher{
         c2s.setVisibility(View.GONE);
         c3s.setVisibility(View.GONE);
         c4s.setVisibility(View.GONE);
-    }
-
-    public void on1(View view){
-        gs.setVisibility(View.GONE);
-        c1s.setVisibility(View.VISIBLE);
-        c2s.setVisibility(View.GONE);
-        c3s.setVisibility(View.GONE);
-        c4s.setVisibility(View.GONE);
-    }
-
-    public void on2(View view){
-        gs.setVisibility(View.GONE);
-        c1s.setVisibility(View.GONE);
-        c2s.setVisibility(View.VISIBLE);
-        c3s.setVisibility(View.GONE);
-        c4s.setVisibility(View.GONE);
-    }
-
-    public void on3(View view){
-        gs.setVisibility(View.GONE);
-        c1s.setVisibility(View.GONE);
-        c2s.setVisibility(View.GONE);
-        c3s.setVisibility(View.VISIBLE);
-        c4s.setVisibility(View.GONE);
-    }
-
-    public void on4(View view){
-        gs.setVisibility(View.GONE);
-        c1s.setVisibility(View.GONE);
-        c2s.setVisibility(View.GONE);
-        c3s.setVisibility(View.GONE);
-        c4s.setVisibility(View.VISIBLE);
     }
 
     private void showGrid(JSONArray jsonArray) throws JSONException {
@@ -154,7 +199,6 @@ public class Product extends AppCompatActivity implements TextWatcher{
                     p.setC_name(category_name);
                     p.setP_pic(product_pic);
                     productList.add(p);
-                    //category1.add(p);
 
                 productModel p01 = new productModel();
                 if(category_id.contains("1")) {
@@ -200,6 +244,25 @@ public class Product extends AppCompatActivity implements TextWatcher{
                     category4.add(p04);
                 }
             }
+    }
+
+    private void showPic(JSONArray jsonArray) throws JSONException {
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            String category_id = jsonObject.getString("category_id");
+            String category_name = jsonObject.getString("category_name");
+            String picture_name = jsonObject.getString("img_name");
+            String category_pic = jsonObject.getString("img_url");
+            //Toast.makeText(Product.this, product_pic, Toast.LENGTH_LONG).show();
+
+            productModel p = new productModel();
+            p.setC_name(category_name);
+            p.setC_id(category_id);
+            p.setPic_name(picture_name);
+            p.setC_pic(category_pic);
+            categoryList.add(p);
+        }
     }
 
     @Override

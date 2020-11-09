@@ -1,10 +1,10 @@
 package com.example.internproject;
 
-import android.net.Uri;
+import java.util.ArrayList;
 
-public class productModel {
+public class productModel extends ArrayList<productModel> {
     String product_id, category_id, selling_price;
-    String product_name, category_name, product_pic;
+    String product_name, category_name, product_pic, picture_name, category_pic;
 
     public productModel(String p_name, String c_name, String p_id, String c_id, String price, String p_pic) {
         this.product_name = p_name;
@@ -64,4 +64,15 @@ public class productModel {
 
     public String getP_pic(){ return product_pic;}
 
+    public void setPic_name(String picture_name){
+        this.picture_name = picture_name;
+    }
+
+    public String getPic_name(){ return picture_name;}
+
+    public void setC_pic(String category_pic){
+        this.category_pic = category_pic;
+    }
+
+    public String getC_pic(){ return category_pic;}
 }
