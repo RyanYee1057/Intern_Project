@@ -1,5 +1,6 @@
 package com.example.internproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -78,18 +79,84 @@ public class Product extends AppCompatActivity implements TextWatcher{
                         }
                         adapter = new CustomAdapter(Product.this, productList);
                         gridView.setAdapter(adapter);
+                        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                for(int n = 0; n <= i; n++) {
+                                    if (n == i) {
+                                        Intent intent = new Intent(Product.this, ProductOverview.class);
+                                        int num = i + 1;
+                                        intent.putExtra("x", String.valueOf(num));
+                                        startActivity(intent);
+                                    }
+                                }
+                            }
+                        });
 
                         a1 = new CustomAdapter(Product.this, category1);
                         c1.setAdapter(a1);
+                        c1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                for(int n = 0; n <= i; n++) {
+                                    if (n == i) {
+                                        Intent intent = new Intent(Product.this, ProductOverview.class);
+                                        intent.putExtra("numC1", String.valueOf(i));
+                                        startActivity(intent);
+                                    }
+                                }
+                            }
+                        });
 
                         a2 = new CustomAdapter(Product.this, category2);
                         c2.setAdapter(a2);
+                        c2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                for(int n = 0; n <= i; n++) {
+                                    if (n == i) {
+                                        Intent intent = new Intent(Product.this, ProductOverview.class);
+                                        intent.putExtra("numC2", String.valueOf(i));
+                                        startActivity(intent);
+                                    }
+                                }
+                            }
+                        });
 
                         a3 = new CustomAdapter(Product.this, category3);
                         c3.setAdapter(a3);
+                        c3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                for(int n = 0; n <= i; n++) {
+                                    if (n == i) {
+                                        Intent intent = new Intent(Product.this, ProductOverview.class);
+                                        intent.putExtra("numC3", String.valueOf(i));
+                                        startActivity(intent);
+                                    }
+                                }
+                            }
+                        });
 
                         a4 = new CustomAdapter(Product.this, category4);
                         c4.setAdapter(a4);
+                        c4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                for(int n = 0; n <= i; n++) {
+                                    if (n == i) {
+                                        Intent intent = new Intent(Product.this, ProductOverview.class);
+                                        intent.putExtra("numC4", String.valueOf(i));
+                                        startActivity(intent);
+                                    }
+                                }
+                            }
+                        });
 
                     }
                 }, new Response.ErrorListener() {
